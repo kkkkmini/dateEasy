@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:da_easy_front/font.dart';
 import 'package:da_easy_front/newDate.dart';
+import 'package:da_easy_front/primitiveMain.dart';
 
 void main() {
   runApp(const MyApp());
@@ -70,6 +71,7 @@ class _DaHomePageState extends State<DaHomePage> {
               ),
               DaCard(),
               TemporaryButton(),
+              GotoMain(),
             ],
           ),
         ),

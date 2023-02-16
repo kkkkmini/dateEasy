@@ -33,7 +33,7 @@ dependencies:
   flutter:
     sdk: flutter  
   date_ranger: 
-
+  panara_dialogs: ^0.1.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -61,6 +61,7 @@ flutter:
   uses-material-design: true
   assets:
   - assets/images/daeasyLogo.png
+  - assets/images/RealLogo.png
 
   # To add assets to your application, add an assets section, like this:
  

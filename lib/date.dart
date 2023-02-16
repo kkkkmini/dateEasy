@@ -15,17 +15,17 @@ class _SameDatePickerState extends State<SameDatePicker> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+      padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
       child: DateRanger(
         activeDateBottomSpace: 10,
-        runSpacing: 10,
+        runSpacing: 13,
         itemHeight: 30,
         activeDateFontSize: 15,
-        horizontalPadding: 15,
+        horizontalPadding: 5,
         activeItemBackground: const Color(0xff6750A4),
         rangeBackground: const Color(0xffE8DEF8),
         borderColors: Colors.black,
-        backgroundColor: const Color(0xffFAFCFF),
+        backgroundColor: const Color(0xffEDF4F9),
         initialRange: initialDateRange,
         onRangeChanged: (range) {
           setState(() {

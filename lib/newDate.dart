@@ -2,8 +2,8 @@ import 'package:da_easy_front/font.dart';
 import 'package:da_easy_front/newDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:da_easy_front/main.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:da_easy_front/date.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 
 class NewDatePage extends StatefulWidget {
   const NewDatePage({super.key});
@@ -25,7 +25,23 @@ class _NewDatePageState extends State<NewDatePage> {
         title: const AppBarText(),
         actions: <Widget>[
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              PanaraConfirmDialog.showAnimatedGrow(
+                context,
+                title: "확정하시겠습니까?",
+                message: "확정하시면 선택한 \n 일정들이 정리됩니다.",
+                confirmButtonText: "확인",
+                cancelButtonText: "취소",
+                onTapCancel: () {
+                  Navigator.pop(context);
+                },
+                onTapConfirm: () {
+                  Navigator.pop(context);
+                },
+                panaraDialogType: PanaraDialogType.error,
+                noImage: true,
+              );
+            },
             child: const Text(
               '저장',
               style: Subtitle2_2,
@@ -33,12 +49,13 @@ class _NewDatePageState extends State<NewDatePage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          const TextDateTitle(),
-          const SameDate(),
-          SameDatePicker(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const TextDateTitle(),
+            const SameDate(),
+          ],
+        ),
       ),
     );
   }
@@ -132,23 +149,24 @@ class SameDate extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
             width: 380,
-            height: 60,
+            height: 505,
             child: Card(
-              child: Row(
-                children: const [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(13, 15, 0, 0),
                     child: Text(
-                      '당일 치기',
-                      style: body1_4,
+                      '날짜 선택',
+                      style: body1_2,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: SamgeDaySwitch(),
+                  Divider(
+                    thickness: 1,
+                    indent: 10,
+                    endIndent: 10,
                   ),
+                  SameDatePicker(),
                 ],
               ),
               elevation: 0,
@@ -157,34 +175,6 @@ class SameDate extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class SamgeDaySwitch extends StatefulWidget {
-  const SamgeDaySwitch({super.key});
-
-  @override
-  State<SamgeDaySwitch> createState() => _SamgeDaySwitchState();
-}
-
-class _SamgeDaySwitchState extends State<SamgeDaySwitch> {
-  bool status = false;
-  @override
-  Widget build(BuildContext context) {
-    return FlutterSwitch(
-      width: 35,
-      height: 20,
-      toggleSize: 20,
-      value: status,
-      borderRadius: 30,
-      padding: 2,
-      activeColor: const Color(0xffFFE171),
-      onToggle: (val) {
-        setState(() {
-          status = val;
-        });
-      },
     );
   }
 }
