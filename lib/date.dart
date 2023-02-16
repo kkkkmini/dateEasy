@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:da_easy_front/font.dart';
 import 'package:date_ranger/date_ranger.dart';
+import 'package:intl/intl.dart';
 
 class SameDatePicker extends StatefulWidget {
   @override
@@ -30,6 +31,8 @@ class _SameDatePickerState extends State<SameDatePicker> {
         onRangeChanged: (range) {
           setState(() {
             initialDateRange = range;
+            print(DateFormat.yMd().format(initialDateRange.start));
+            print(DateFormat.yMd().format(initialDateRange.end));
           });
         },
       ),
